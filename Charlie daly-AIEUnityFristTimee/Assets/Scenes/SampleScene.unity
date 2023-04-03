@@ -7341,6 +7341,7 @@ MonoBehaviour:
   m_Tanks:
   - {fileID: 1790621757}
   - {fileID: 106997659}
+  m_TanksRespwanLocation: []
 --- !u!4 &1717290331
 Transform:
   m_ObjectHideFlags: 0
@@ -10194,6 +10195,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1048251521270514072, guid: 996164107fd37ba49a2cf686e15c49fd, type: 3}
       propertyPath: thePosition
+      value: 
+      objectReference: {fileID: 565822474}
+    - target: {fileID: 4917394064167755046, guid: 996164107fd37ba49a2cf686e15c49fd, type: 3}
+      propertyPath: _waypoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917394064167755046, guid: 996164107fd37ba49a2cf686e15c49fd, type: 3}
+      propertyPath: _waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 565822474}
     - target: {fileID: 4917394065822680504, guid: 996164107fd37ba49a2cf686e15c49fd, type: 3}

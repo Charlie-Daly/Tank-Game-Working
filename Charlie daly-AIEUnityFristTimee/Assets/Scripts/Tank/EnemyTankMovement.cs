@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyTankMovement : MonoBehaviour
 {
+    public List<Transform> _waypoints = new List<Transform>();
+    private int currentWaypoint;
+
     //the tank will stop moving towards the player once it reaches this distance
     public float m_CloseDistance = 8f;
     //the tank's turret object
@@ -66,6 +69,7 @@ public class EnemyTankMovement : MonoBehaviour
     {
         if (m_Follow == false)
         {
+            /*
             float BaseDistance = (m_ReturnBase.transform.position - transform.position).magnitude;
             if (BaseDistance > m_CloseDistance)
             {
@@ -82,24 +86,48 @@ public class EnemyTankMovement : MonoBehaviour
                 m_Turret.LookAt(m_ReturnBase.transform);
             }
             return;
-        }
+            */
+            if (_waypoints.Count <= 0)
+            {
+                return;
+            }
 
-        //get distance form player to enemy tank
-        float distance = (m_Player.transform.position - transform.position).magnitude;
-        //if distance is less than stop distance, then stop moving
-        if (distance > m_CloseDistance)
-        {
-            m_NavAgent.SetDestination(m_Player.transform.position);
-            m_NavAgent.isStopped = false;
+            if (currentWaypoint < _waypoints.Count)
+            {
+                if (Vector3.Distance(transform.position, _waypoints[currentWaypoint].position) > 2)
+                {
+                    m_NavAgent.SetDestination(_waypoints[currentWaypoint].position);
+                }
+                else
+                {
+                    currentWaypoint = 0;
+                }
+            }
         }
         else
         {
-            m_NavAgent.isStopped = true;
-        }
 
-        if (m_Turret != null)
-        {
-            m_Turret.LookAt(m_Player.transform);
+
+
+            //get distance form player to enemy tank
+            float distance = (m_Player.transform.position - transform.position).magnitude;
+
+            //if distance is less than stop distance, then stop moving
+            if (distance > m_CloseDistance)
+            {
+                m_NavAgent.SetDestination(m_Player.transform.position);
+                m_NavAgent.isStopped = false;
+            }
+            else
+            {
+                m_NavAgent.isStopped = true;
+            }
+
+            if (m_Turret != null)
+            {
+                m_Turret.LookAt(m_Player.transform);
+            }
+
         }
     }
 }

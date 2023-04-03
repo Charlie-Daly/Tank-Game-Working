@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Button m_HighScoresButton;
 
     public GameObject[] m_Tanks;
+    public GameObject[] m_TanksRespwanLocation;
 
     //public GameManager[] m_PreTimes;
 
@@ -184,6 +185,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < m_Tanks.Length; i++)
         {
             m_Tanks[i].SetActive(true);
+           // m_Tanks[i].transform.position = m_TanksRespwanLocation.trans
         }
     }
 
