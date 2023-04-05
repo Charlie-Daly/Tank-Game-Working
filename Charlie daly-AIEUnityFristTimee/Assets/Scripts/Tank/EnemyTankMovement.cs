@@ -69,7 +69,7 @@ public class EnemyTankMovement : MonoBehaviour
     {
         if (m_Follow == false)
         {
-            /*
+            
             float BaseDistance = (m_ReturnBase.transform.position - transform.position).magnitude;
             if (BaseDistance > m_CloseDistance)
             {
@@ -86,7 +86,7 @@ public class EnemyTankMovement : MonoBehaviour
                 m_Turret.LookAt(m_ReturnBase.transform);
             }
             return;
-            */
+            
             if (_waypoints.Count <= 0)
             {
                 return;
